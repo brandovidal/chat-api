@@ -1,0 +1,18 @@
+version: '3'
+services:
+  # Database - Mongo DB
+  mongo:
+    image: mongo:8.0.3
+    container_name: chat_db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    ports:
+      - 27017:27017
+    env_file:
+      - path: .env
+    volumes:
+      # - ./mongodb-data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
