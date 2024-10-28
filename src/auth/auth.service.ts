@@ -17,7 +17,7 @@ export class AuthService {
     // check the user exist
     const existingUser = await this.userModel.findOne({ username }).exec();
     if (existingUser) {
-      throw new Error('user ALready exists');
+      throw new Error('User Already exists');
     }
 
     const salt = await bcrypt.gentSalt();
