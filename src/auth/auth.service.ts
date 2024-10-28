@@ -20,7 +20,7 @@ export class AuthService {
       throw new Error('User Already exists');
     }
 
-    const salt = await bcrypt.gentSalt();
+    const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new this.userModel({ username, password: hashedPassword });
