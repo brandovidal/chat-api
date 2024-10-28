@@ -1,6 +1,6 @@
 import { Schema } from 'mongoose';
 
-export const ChatSchema = new Schema({
+export const ChatModel = new Schema({
   participants: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   messages: [
     {
