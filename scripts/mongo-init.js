@@ -1,22 +1,22 @@
 db = db.getSiblingDB('admin');
 db.auth(
-  process.env.MONGO_INITDB_ROOT_USERNAME,
-  process.env.MONGO_INITDB_ROOT_PASSWORD,
+  process.env.DATABASE_ROOT_USERNAME,
+  process.env.DATABASE_ROOT_PASSWORD,
 );
 
-db = db.getSiblingDB(process.env.MONGO_INITDB_DATABASE);
+db = db.getSiblingDB(process.env.DATABASE_NAME);
 db.createUser({
-  user: process.env.MONGO_USER,
-  pwd: process.env.MONGO_PASSWORD,
+  user: process.env.DATABASE_USER,
+  pwd: process.env.DATABASE_PASSWORD,
   roles: [
     {
       role: 'readWrite',
-      db: process.env.MONGO_INITDB_DATABASE,
+      db: process.env.DATABASE_NAME,
     },
   ],
 });
 
-const collection = process.env.MAIN_DB_COLLECTION;
+const collection = process.env.DATABASE_COLLECTION;
 db.createCollection(collection);
 
 db[collection].insertMany([
