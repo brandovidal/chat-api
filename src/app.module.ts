@@ -6,9 +6,10 @@ import { AppService } from './app.service';
 
 import { AuthModule } from './auth/auth.module';
 import { DbModule } from './db/db.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), DbModule, AuthModule, ConfigModule],
+  imports: [ConfigModule.forRoot(), DbModule, AuthModule, ConfigModule, ChatModule],
   controllers: [AppController],
   providers: [AppService],
 })
