@@ -9,6 +9,7 @@ import { User, UserDocument } from 'src/schemas/user.schema';
 import { RegisterUserDto } from './dto/register-user.dto';
 
 import { LoginUserDto } from './dto/login-user.dto';
+import { UserProfileDto } from './dto/user-profile.dto';
 
 @Injectable()
 export class AuthService {
@@ -58,5 +59,12 @@ export class AuthService {
     return {
       access_token: this.jwtService.sign(payload),
     };
+  }
+  async getUserProfile(userId: string): Promise<UserProfileDto> {
+    const user = await this.userModel.findById(userId).exec();
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return { username: user.username };
   }
 }
