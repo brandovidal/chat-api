@@ -47,7 +47,6 @@ export class ChatGateway
       payload.userId,
       message,
     );
-    console.log('🚀 ~ chat:', chat);
     this.server.to(payload.chatId).emit('receiveMessage', chat);
   }
 

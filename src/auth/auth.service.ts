@@ -67,7 +67,7 @@ export class AuthService {
     if (!user) {
       throw new Error('User not found');
     }
-    return { username: user.username };
+    return { username: user.username, id: user._id };
   }
 
   async updateUserProfile(

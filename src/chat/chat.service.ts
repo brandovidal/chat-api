@@ -44,7 +44,6 @@ export class ChatService {
     sendMessageDto: SendMessageDto,
   ): Promise<Chat> {
     const chat = await this.chatModel.findById(chatId);
-    console.log('🚀 ~ ChatService ~ chat:', chat);
     if (!chat) {
       throw new NotFoundException('Chat not found');
     }
