@@ -47,11 +47,13 @@ export class ChatGateway
       payload.userId,
       message,
     );
+    console.log('🚀 ~ chat:', chat);
     this.server.to(payload.chatId).emit('receiveMessage', chat);
   }
 
   @SubscribeMessage('joinChat')
   handleJoinChat(client: Socket, chatId: string) {
+    console.log('🚀 ~ handleJoinChat ~ chatId:', chatId);
     client.join(chatId);
     console.log(`Client ${client.id} joined chat ${chatId}`);
   }

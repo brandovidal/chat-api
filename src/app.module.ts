@@ -9,7 +9,13 @@ import { DbModule } from './db/db.module';
 import { ChatModule } from './chat/chat.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), DbModule, AuthModule, ConfigModule, ChatModule],
+  imports: [
+    ConfigModule.forRoot(),
+    DbModule,
+    AuthModule,
+    ConfigModule,
+    ChatModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
